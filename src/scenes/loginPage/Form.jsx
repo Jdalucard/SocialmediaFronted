@@ -70,9 +70,10 @@ const Form = () => {
         body: formData,
       }
     );
+    console.log(savedUserResponse);
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
-
+    console.log(savedUser);
     if (savedUser) {
       setPageType("login");
     }
@@ -80,15 +81,17 @@ const Form = () => {
 
   const login = async (values, onSubmitProps) => {
     const loggedInResponse = await fetch(
-      "https://socialmedia-2vgd.onrender.com/login",
+      "https://socialmedia-2vgd.onrender.com/auth/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }
     );
+    console.log(loggedInResponse);
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
+    console.log(loggedIn);
     if (loggedIn) {
       dispatch(
         setLogin({
